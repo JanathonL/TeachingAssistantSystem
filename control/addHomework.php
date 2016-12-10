@@ -39,7 +39,7 @@ type int not null,      -- 作业形式 1选择题，2问答题
     	$sql=$conn->prepare("INSERT INTO homework 
     		(name, type,state,course_id,Teacher1,post_time,update_time,submit_limit,answer,content,year,course_time1) 
     		VALUES 
-    		(:name,:type,:state,:course_id,:Teacher1,:post_time,:update_time,:update_time,:submit_limit,:answer,:content,:year,:course_time1)");
+    		(:name,:type,:state,:course_id,:Teacher1,:post_time,:update_time,:submit_limit,:answer,:content,:year,:course_time1)");
     	$sql->bindParam(':name',$homeworkname);
     	$sql->bindParam(':type',$type);
     	$sql->bindParam(':state',$state);
