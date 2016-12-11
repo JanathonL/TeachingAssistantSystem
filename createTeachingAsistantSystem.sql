@@ -4,7 +4,7 @@ CREATE TABLE  IF NOT EXISTS OrdinaryUser (   -- 包含所有的用户，助教�
   userID varchar(20) NOT NULL,
   username varchar(20) not NULL,
   password varchar(20) not null,  -- md5加密
-  type int not null,              -- 与一下判断有什么类型
+  type int not null,              -- 1学生，2助教，4老师，8管理员
   permission int not null,        -- 与一下然后判断有什么权限
   nickname varchar(20) not null,
   gender int not null,            -- male, female, why do you ask
@@ -50,7 +50,7 @@ CREATE TABLE IF NOT EXISTS Teacher (
 --   PRIMARY KEY (userID)
 -- ) CHARACTER SET utf8;
 CREATE TABLE IF NOT EXISTS Course (
-  year date not null,
+  year varchar(20) not null,
   course_id varchar(20)not null,
   course_name VARCHAR(255)not null,
   Course_type varchar(20),        -- 课程类别
@@ -67,15 +67,16 @@ CREATE TABLE IF NOT EXISTS Course (
 CREATE TABLE IF NOT EXISTS student_class (
   id INT UNSIGNED NOT NULL AUTO_INCREMENT,
   userID VARCHAR(20) not null,
-  year date not null,
+  year varchar(20) not null,
   course_id varchar(20)not null,
   Teacher1 varchar(20) not null,
   course_time1 varchar(255) not null,
   PRIMARY KEY (id)
-) ENGINE = InnoDB;
+) CHARACTER SET utf8;
 CREATE TABLE IF NOT EXISTS SingleClass ( -- 一个班级上课的时间地点
-  year date not null,
+  year varchar(20) not null,
    course_id varchar(20)not null,
+   teacher_assistant_id varchar(20) not null,   -- 新增助教
    Teacher1 varchar(20) not null,
    Teacher2 varchar(20),
    Teacher3 varchar(20),
@@ -97,7 +98,7 @@ CREATE TABLE IF NOT EXISTS SingleClass ( -- 一个班级上课的时间地点
 ) CHARACTER SET utf8;
 
 CREATE TABLE IF NOT EXISTS student_grade (   -- 一门课学生的成绩
-  year date not null,
+  year varchar(20) not null,
   student_id varchar(20) not null,
   course_id varchar(20) not null,
   score_100 int,
@@ -105,12 +106,12 @@ CREATE TABLE IF NOT EXISTS student_grade (   -- 一门课学生的成绩
   PRIMARY KEY (student_id,course_id,year)
 ) CHARACTER SET utf8;
 CREATE TABLE IF NOT EXISTS examination (     -- 一个班级的考试时间地点
-  year date not null,
+  year varchar(20) not null,
   course_id varchar(20) not null,
   Teacher1 varchar(20) not null,
   course_time1 varchar(255) not null,
-  exam_start_time date not null,
-  exam_end_time date not null,
+  exam_start_time varchar(20) not null,
+  exam_end_time varchar(20) not null,
   exam_place1 varchar(20) not null,
   exam_place2 varchar(20),
   exam_place3 varchar(20),
@@ -119,19 +120,19 @@ CREATE TABLE IF NOT EXISTS examination (     -- 一个班级的考试时间地�
 ) CHARACTER SET utf8;
 CREATE TABLE IF NOT EXISTS Notice (
   id INT UNSIGNED NOT NULL AUTO_INCREMENT,
-  year date not null,
+  year varchar(20) not null,
   course_id varchar(20)not null,
   Teacher1 varchar(20) not null,
   course_time1 varchar(255) not null,
   message varchar(255),
-  pub_date date,
+  pub_date varchar(20),
   PRIMARY KEY (id,pub_date)
 ) CHARACTER SET utf8;
 CREATE TABLE IF NOT EXISTS board (
   id INT UNSIGNED NOT NULL AUTO_INCREMENT,
   name VARCHAR(255),
   introduction varchar(255),
-  year date not null,
+  year varchar(20) not null,
   course_id varchar(20)not null,
   boardmaster varchar(20),
   PRIMARY KEY (id)
@@ -144,9 +145,9 @@ CREATE TABLE IF NOT EXISTS post (
   pre_id int,       -- 回复哪个帖子的，如果没有那就是0
   floor int,        -- 楼层
   userID varchar(20),   -- 发帖人
-  post_time date,     -- 发帖时间
+  post_time varchar(20),     -- 发帖时间
   message VARCHAR(255), -- 发帖内容，如果有图片什么的都是写链接
-  update_time date,       -- 修改时间
+  update_time varchar(20),       -- 修改时间
   PRIMARY KEY (id)
 ) CHARACTER SET utf8;
 /*
@@ -163,41 +164,43 @@ CREATE TABLE IF NOT EXISTS homework (   -- 直接链接就是链到作业id
   id INT UNSIGNED NOT NULL AUTO_INCREMENT,
   type int not null,      -- 作业形式 1选择题，2问答题
   state int not null,     -- 作业批改状态
-  year date not null,
+  year varchar(20) not null,
   course_id varchar(20)not null,
   Teacher1 varchar(20) not null,
   course_time1 varchar(255) not null,
   name VARCHAR(255),
   content varchar(255),           -- 有图片的用链接
-  post_time date,
-  update_time date,
-  deadline date,
+  post_time varchar(20),
+  update_time varchar(20),
+  deadline varchar(20),
   score int,
   submit_limit int,
   answer varchar(255),
   PRIMARY KEY (id)
 ) CHARACTER SET utf8;
 CREATE TABLE IF NOT EXISTS homework_submit (
+  year varchar(20) not null,
+  course_id varchar(20)not null,
+  student_id varchar(20),
   id INT UNSIGNED NOT NULL AUTO_INCREMENT,
   submit_url varchar(255),
   submit_cnt int,     -- 超过限制就不能上传了
   homework_id int,
-  name VARCHAR(255),
-  course_id varchar(20),
-  student_id varchar(20),
+  name VARCHAR(255),  
+  feedback varchar(255),
   score int,
   PRIMARY KEY (id)
 ) CHARACTER SET utf8;
 CREATE TABLE IF NOT EXISTS material (
   id INT UNSIGNED NOT NULL AUTO_INCREMENT,
-  year date not null,
+  year varchar(20) not null,
   course_id varchar(20)not null,
   Teacher1 varchar(20) not null,
   course_time1 varchar(255) not null,
   name VARCHAR(255),
   content varchar(255),   -- 描述       
-  post_time date,
-  update_time date,
+  post_time varchar(20),
+  update_time varchar(20),
   url varchar(255),
   PRIMARY KEY (id)
 ) CHARACTER SET utf8;

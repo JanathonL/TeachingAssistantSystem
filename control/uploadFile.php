@@ -3,48 +3,27 @@
   session_start();
 ?>
 <?php
-$uploadSuccess=false;
-if (isset($_FILES["file"])) {
-  if ((($_FILES["file"]["type"] == "application/octet-stream")  //rar,7z
-  || ($_FILES["file"]["type"] == " application/zip")   //zip
-  || ($_FILES["file"]["type"] == " application/msword") //word
-  || ($_FILES["file"]["type"] == " application/vnd.ms-powerpoint ")//ppt
-  || ($_FILES["file"]["type"] == " application/pdf ")//pdf
-  || ($_FILES["file"]["type"] == " text/plain")//txt
-  )  //word
-  && ($_FILES["file"]["size"] < 20000))
-    {
-    if ($_FILES["file"]["error"] > 0)
-      {
-      echo "Return Code: " . $_FILES["file"]["error"] . "<br />";
-      }
-    else
-      {
-      echo "Upload: " . $_FILES["file"]["name"] . "<br />";
-      echo "Type: " . $_FILES["file"]["type"] . "<br />";
-      echo "Size: " . ($_FILES["file"]["size"] / 1024) . " Kb<br />";
-      echo "Temp file: " . $_FILES["file"]["tmp_name"] . "<br />";
+require 'uploadFile_function.php';
+$year=date("Y");
+$course_id=$_SESSION["course_id"];
+$Teacher1=$_SESSION["Teacher1"];
+$course_time1=$_SESSION["course_time1"];
+$url='upload/'.$year.'/'.$course_id.'/'.$Teacher1.'/'.$course_time1;
+$fullurl=uploadFile($url);
 
-      if (file_exists("upload/" . $_FILES["file"]["name"]))
-        {
-        echo $_FILES["file"]["name"] . " already exists. ";
-        }
-      else
-        {
-        move_uploaded_file($_FILES["file"]["tmp_name"],
-        "upload/" . $_FILES["file"]["name"]);
-        $uploadSuccess=true;
-        echo "Stored in: " . "upload/" . $_FILES["file"]["name"];
-        }
-      }
-  }
-else
-  {
-  echo "Invalid file";
-  }
-}
 ?>
-<?php include 'db.php'; ?>
+<?php include 'db.php'; 
+require 'getId.php';?>
+<?php 
+/*********************************************************************************
+描述：上传资料
+
+Input:
+1. $_POST["name"];
+2. $_POST["content"];
+Output: $lastId,$isOK
+*********************************************************************************/
+ ?>
 <?php
 /*
 CREATE TABLE IF NOT EXISTS material (
@@ -61,18 +40,15 @@ CREATE TABLE IF NOT EXISTS material (
   PRIMARY KEY (id)
 ) CHARACTER SET utf8;
 */
-  if (uploadSuccess) {
+  if ($fullurl!=null) {
     try {
       $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
-      $year=date("Y");
-      $course_id=$_SESSION["course_id"];
-      $Teacher1=$_SESSION["Teacher1"];
-      $course_time1=$_SESSION["course_time1"];
+      
       $name=$_POST["name"];
       $content=$_POST["content"];
-      $post_time=$_POST["post_time"];
-      $update_time=$_POST["update_time"];
-      $url="upload/" . $_FILES["file"]["name"];
+      $post_time=date("Y/m/d");
+      $update_time=date("Y/m/d");
+      
       $isOK=false;
       $sql=$conn->prepare("INSERT INTO material 
         (course_id,Teacher1,post_time,update_time,content,year,course_time1,name,url) 
@@ -91,7 +67,7 @@ CREATE TABLE IF NOT EXISTS material (
       $sql->bindParam(':url',$url);
       
       $isOK = $sql->execute();
-      $lastId = $conn->lastInsertId();
+      $lastId = getId("material",$course_id,$Teacher1,$course_time1,"name",$name);
     if ($isOK==true) {
       echo "add permission successfully";
     }
