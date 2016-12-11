@@ -1,6 +1,16 @@
 <?php session_start(); ?>
 
 <?php include 'db.php'; ?>
+<?php 
+/*********************************************************************************
+描述：移除权限
+Input:
+1. $_POST['userID']
+2. $_POST["type"]
+3. $_POST["permission"]
+Output: $isOK
+*********************************************************************************/
+ ?>
 <?php
 /*
  userID varchar(20) NOT NULL,
@@ -29,7 +39,6 @@
     	$sql->bindParam(':permission',$permission);
     	
 	   	$isOK = $sql->execute();
-	   	$lastId = $conn->lastInsertId();
 		if ($isOK==true) {
 			echo "add permission successfully";
 		}

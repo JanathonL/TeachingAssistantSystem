@@ -3,6 +3,19 @@
 ?>
 
 <?php include 'db.php'; ?>
+<?php 
+require 'getFourKeyAttrs.php';
+require 'getId.php'; 
+?>
+<?php 
+/*********************************************************************************
+描述：当进入某一门课的页面
+流程：
+  1. 得到所有的参数，然后插入数据到notice表中
+Input:$_POST["message"];
+Output: $lastId 这是插入这条记录的id
+*********************************************************************************/
+ ?>
 <?php
 /*
  id INT UNSIGNED NOT NULL AUTO_INCREMENT,
@@ -16,10 +29,7 @@
   if (isset($_POST['message'])) {
     try {
       $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
-    	$year=date("Y");
-    	$course_id=$_SESSION["course_id"];
-    	$Teacher1=$_SESSION["Teacher1"];
-    	$course_time1=$_SESSION["course_time1"];
+    	
     	$message=$_POST["message"];
       $pub_date=date("Y/m/d");
     	$isOK=false;
@@ -36,7 +46,7 @@
       $sql->bindParam(':message',$message);
       $sql->bindParam(':pub_date',$pub_date);
 	 	$isOK = $sql->execute();
-		$lastId = $conn->lastInsertId();
+		$lastId = getId("Notice",$course_id,$Teacher1,$course_time1,"message",$message);
 		if ($isOK==true) {
 			echo "add notice successfully";
 		}

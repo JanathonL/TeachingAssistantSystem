@@ -9,7 +9,14 @@
 4. 然后使用userID通过ordinaryuser这个表找到学生的名字
 5. 通过UserID和course_id还有year找到学生这门课的信息
 6. 如果要显示这个学生各次作业的信息，通过course_id和userID进行查找学生各次作业的情况按作业的ID号升序。
-*/ ?>
+*/ 
+/*********************************************************************************
+描述：返回所有的学生
+Input:
+1. $_GET['searchStudent']   不用设置值
+Output: $result_students
+*********************************************************************************/
+?>
 <?php include 'db.php'; ?>
 <?php
 
@@ -66,7 +73,8 @@
         array_push($result_students, new Student($userID, $username, $score_100,$homework_score,$homework_id));
       }
 
-      echo json_encode($result_students);
+      //echo json_encode($result_students);
+
     }
     catch(PDOException $e)
     {
