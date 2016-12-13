@@ -1,6 +1,18 @@
 <?php session_start(); ?>
 
 <?php include 'db.php'; ?>
+<?php 
+/*********************************************************************************
+描述：当进入某一门课的作业页面
+流程：
+  1. 得到所有的参数，然后插入数据到homework表中
+Input:
+1. $_POST['userID']
+2. $_POST["type"]
+3. $_POST["permission"]
+Output: $lastId 这是插入这条记录的id
+*********************************************************************************/
+ ?>
 <?php
 /*
  userID varchar(20) NOT NULL,
@@ -23,13 +35,10 @@
     	$isOK=false;
     	$sql=$conn->prepare("UPDATE OrdinaryUser set type=type|:type, 
         permission=permission | :permission where userID=:userID");
-    	
     	$sql->bindParam(':userID',$userID);
     	$sql->bindParam(':type',$type);
     	$sql->bindParam(':permission',$permission);
-    	
 	   	$isOK = $sql->execute();
-	   	$lastId = $conn->lastInsertId();
 		if ($isOK==true) {
 			echo "add permission successfully";
 		}
