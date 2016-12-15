@@ -42,7 +42,7 @@ Output: $result 这是一个array，里面有所有  特定的表  的属性。
       return null;
     }
   }
-  function ListItems($tablename,$student_id)
+  function ListStuItems($tablename,$student_id)
   {
     include 'db.php';
     if (isset($_GET['course_time1'])) {

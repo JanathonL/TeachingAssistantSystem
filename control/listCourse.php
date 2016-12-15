@@ -29,24 +29,6 @@ Output:
  ?>
 <?php include 'db.php'; ?>
 <?php
-  class Course {
-    function Course($year, $course_id, $course_name,$Course_type,$language,
-                    $introduction, $content, $plan,$English_name,$department,
-                    $credit, $prerequisite_course) {
-      $this->year = $year;
-      $this->course_id = $course_id;
-      $this->course_name = $course_name;
-      $this->Course_type = $Course_type;
-      $this->language = $language;
-      $this->introduction = $introduction;
-      $this->content = $content;
-      $this->plan = $plan;
-      $this->English_name = $English_name;
-      $this->department = $department;
-      $this->credit = $credit;
-      $this->prerequisite_course = $prerequisite_course;      
-    }
-  }
   if (isset($_GET['listCourse'])) {
     try {
       $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
@@ -106,10 +88,7 @@ Output:
         $sql5->bindParam(':course_id',$row["course_id"]);
         $sql5->execute();
         $single_course=$sql5->fetchObject();
-        array_push($courseList,new Course($row["year"], $row["course_id"], $row["course_name"],
-        			$row["Course_type"],$row["language"],
-                    $row["introduction"], $row["content"], $row["plan"],$row["English_name"],
-                    $row["department"],$row["credit"], $row["prerequisite_course"]));
+        array_push($courseList,$single_course);
       }
       
     }

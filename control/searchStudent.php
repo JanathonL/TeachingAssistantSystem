@@ -53,7 +53,7 @@ Output: $result_students
       $result_students=array();                //这个是最后的结果
     	foreach($result as $row){
         $userID=$row["userID"];
-        $sq2->bindParam(':userID',$row["userID"]);
+        $sql2->bindParam(':userID',$row["userID"]);
     		$sql2->execute();
         $result2=$sql2->fetchObject();
         $sql3->bindParam(':userID',$row["userID"]);
