@@ -40,6 +40,11 @@ type int not null,      -- 作业形式 1选择题，2问答题
   score int,
   submit_limit int,
   answer varchar(255),
+
+
+  1. 添加一条作业
+  2. 查找这个课程所有的学生
+  3. 通过学生id，year，course_id,homework_id,插入成绩0
 */
   if (isset($_POST['homeworkname'])) {
     try {
@@ -80,6 +85,24 @@ type int not null,      -- 作业形式 1选择题，2问答题
 
 		$isOK = $sql->execute();
 		$lastId = getId("homework",$course_id,$Teacher1,$course_time1,"name",$homeworkname);
+
+      $sql2=$conn->prepare("SELECT userID FROM student_class where year=:year and course_id=:course_id and Teacher1 = :Teacher1 and course_time1=:course_time1");
+      $sql2->bindParam(':course_id',$course_id);
+      $sql2->bindParam(':Teacher1',$Teacher1);
+      $sql2->bindParam(':year',$year);
+      $sql2->bindParam(':course_time1',$course_time1);
+      $sql2->execute();
+      $result = $sql2->fetchAll();
+      foreach ($result as $row) {
+        $sql3=$conn->prepare("INSERT into homework_submit(year,course_id,student_id,homework_id,score)
+          VALUES (:year,:course_id,:student_id,:homework_id,:score)");
+        $sql3->bindParam(':course_id',$course_id);
+        $sql3->bindParam(':year',$year);
+        $sql3->bindParam(':homework_id',$lastId);
+        $sql3->bindParam(':student_id',$result["userID"]);
+        $sql3->bindParam(':score',"0");
+        $isOK = $sql3->execute();
+      }
   		if ($isOK==true) {
   			echo "add homework successfully";
   		}
