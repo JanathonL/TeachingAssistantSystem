@@ -1,0 +1,44 @@
+
+.row {
+    margin-top:5px;
+    margin-bottom:5px;
+}
+
+.name {
+    width:40%;
+    font-size:1.2em;
+    display:table-cell;
+    vertical-align: bottom;
+    color: black;
+}
+
+.update-time {
+    width:15%;
+}
+
+.teacher {
+    width:15%;
+}
+
+.button {
+    margin-left:10px;
+}
+
+a.name:before {
+    content:"\00a0";
+    display:inline-block;
+    height:1.5rem;
+    width:1.5rem;
+    margin-left: 0px;
+    margin-right:20px;
+    background-size:100%;
+}
+
+a.name[href$=".docx"]:before,
+a.name[href$=".doc"]:before {
+    background-image: url("../../image/word.jpg");
+}
+
+a.name[href$=".pdf"]:before {
+    background-image: url("../../image/pdf.jpg");
+}

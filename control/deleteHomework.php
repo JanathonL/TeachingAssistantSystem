@@ -16,7 +16,7 @@ Output:
 <?php
   if (isset($_GET['homeworkid'])) {
     try {
-      $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+      $conn = new PDO("mysql:host=$servername;port=$port;dbname=$dbname", $username, $password);
       $homeworkid= $_GET["homeworkid"];
     	$isOK=false;
     	$sql=$conn->prepare("DELETE FROM homework where id=:id");

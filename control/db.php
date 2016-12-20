@@ -3,4 +3,5 @@
   $username = "tas";
   $password = "root";
   $dbname = "tas";
+  $port="3306";
 ?>

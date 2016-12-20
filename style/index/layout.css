@@ -1,0 +1,77 @@
+* {
+    padding:0;
+}
+
+nav {
+    height:80px;
+}
+
+nav ul{
+    right: 0;
+    position:absolute;
+}
+
+nav ul li {
+    height:100%;
+    line-height: 100%;
+    width:80px;
+    padding: 30px;
+    float:left;
+    display:inline;
+}
+
+#login {
+    position:fixed;
+    width:100%;
+    height:100%;
+}
+
+#login-window {
+    position:relative;
+    top:33%;
+    width: 33%;
+    height: 33%;
+    min-width: 200px;
+    min-height: 200px;
+    max-width: 400px;
+    max-height: 400px;
+    margin:auto;
+    z-index:10;
+}
+
+#login-form {
+    display: block;
+    width:100%;
+    height:100%;
+}
+
+#login-window input {
+    display: block;
+    width: 66%;
+    height: 12%;
+}
+
+#login-window span{
+    color:black;
+}
+
+
+#login-window input[type="radio"] {
+    display:inline-block;
+    width:1.5em;
+    height: 1.5em;
+    margin-left: 30px;
+}
+
+#login-window input[type="submit"]{
+    margin-top:12px;
+}
+
+#login-cover {
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    z-index:9;
+}

@@ -162,9 +162,9 @@ CREATE TABLE IF NOT EXISTS post (
 */
 CREATE TABLE IF NOT EXISTS homework (   -- 直接链接就是链到作业id
   id INT UNSIGNED NOT NULL AUTO_INCREMENT,
-  type int not null,      -- 作业形式 1选择题，2问答题 -1 签到
-  state int not null,     -- 作业批改状态 -1 签到
-  year varchar(20) not null, 
+  type int not null,      -- 作业形式 1选择题，2问答题
+  state int not null,     -- 作业批改状态
+  year varchar(20) not null,
   course_id varchar(20)not null,
   Teacher1 varchar(20) not null,
   course_time1 varchar(255) not null,

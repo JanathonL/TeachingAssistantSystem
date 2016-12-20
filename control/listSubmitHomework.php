@@ -1,4 +1,4 @@
-<?php session_start(); ?>
+
 <?php 
 /*
 
@@ -31,14 +31,19 @@ Output: $result
 <?php
   if (isset($_GET['homeworkid'])) {
     try {
-      $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+      $conn = new PDO("mysql:host=$servername;port=$port;dbname=$dbname", $username, $password);
       $homeworkid= $_GET["homeworkid"];
     	$student_id=$_SESSION["username"];
     	$course_id=$_SESSION["course_id"];
-    	$sql=$conn->prepare("SELECT * from homework_submit where submit_cnt>0 and homework_id=:homeworkid");
+		$sql=$conn->prepare("SELECT * from homework_submit");
+    	//$sql=$conn->prepare("SELECT * from homework_submit where submit_cnt>0 and homework_id=:homeworkid");
     	$sql->bindParam(':homeworkid',$homeworkid);
+		echo "test";
 		$isOK = $sql->execute();
 		$result=$sql->fetchAll();//array
+		foreach($result as $row){
+			echo $row["homework_id"];
+		}
     }
     catch(PDOException $e)
     {

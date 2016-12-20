@@ -1,0 +1,37 @@
+.name {
+    width:40%;
+}
+
+.update-time {
+    width:15%;
+}
+
+.deadline {
+    margin-left:3%;
+    width:15%;
+}
+
+.delete-button,.correct-button{
+    width:5%;
+    margin-left: 3%;
+}
+
+.row {
+    border-bottom-style: dotted;
+}
+
+
+@media all and (max-width: 640px) {
+    .list .row div{
+        word-wrap: normal;
+    }
+    .list .row * {
+        font-size:0.6em;
+    }
+
+    .list .button{
+        width: 40px;
+        height:20px;
+        margin-left:0;
+    }
+}

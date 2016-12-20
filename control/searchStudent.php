@@ -31,7 +31,7 @@ Output: $result_students
   }
   if (isset($_GET['searchStudent'])) {
     try {
-      $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+      $conn = new PDO("mysql:host=$servername;port=$port;dbname=$dbname", $username, $password);
       $year=date("Y");
       $course_id=$_SESSION["course_id"];
       $Teacher1=$_SESSION["Teacher1"];

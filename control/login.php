@@ -6,7 +6,7 @@
 <?php
   if (isset($_POST['username'])) {
     try {
-      $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+      $conn = new PDO("mysql:host=$servername;port=$port;dbname=$dbname", $username, $password);
       $userID= $_POST["username"];
     	$password=$_POST["password"];
     	$name="";
@@ -30,7 +30,7 @@
 
     if ($Is_find==1) {
         $_SESSION['username'] = $name;
-        $_SESSION['user_type'] = $type;
+        $_SESSION['type'] = $type;
     }
     else {
        $_SESSION['message'] = "账号密码错误";
@@ -40,7 +40,7 @@
     if (isset($_SESSION['username'])) {
       $_SESSION['message'] = "登录成功";
       $_SESSION['message_type'] = "success";
-      header("location: ../view/index.php");
+      header("location: ../mycourses.php");
       exit;
     }
   }

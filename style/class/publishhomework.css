@@ -1,0 +1,46 @@
+.row {
+    display:flex;
+}
+
+
+
+.row div{
+    border-style:solid;
+    text-align: center;
+    align-items: center;
+}
+
+.row div textarea{
+    width:100%;
+    height:100%;
+}
+
+.row div input[type="text"]{
+    width:80%;
+}
+
+.row div input{
+    display:inline;
+}
+
+.row div div.button{
+    width:100%;
+    height:100%;
+}
+
+
+.row div:nth-child(1){
+    width:100px;
+}
+
+.row div:nth-child(2){
+    flex:1;
+}
+
+.row div:nth-child(3){
+    width:150px;
+}
+
+.row input[type="submit"], .row input[type="reset"]{
+    width:50%;
+}

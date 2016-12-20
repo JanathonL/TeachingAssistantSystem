@@ -1,4 +1,3 @@
-<?php session_start(); ?>
 <?php 
 /*
 1. 先判断用户类别老师或者是其他
@@ -31,7 +30,7 @@ Output:
 <?php
   if (isset($_GET['listCourse'])) {
     try {
-      $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+      $conn = new PDO("mysql:host=$servername;port=$port;dbname=$dbname", $username, $password);
       $type=$_SESSION["type"];
       $year=date("Y");
       if($type==3){//老师

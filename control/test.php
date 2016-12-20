@@ -5,7 +5,7 @@
 include 'db.php';
 require 'getId.php';
 try {
-      $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+      $conn = new PDO("mysql:host=$servername;port=$port;dbname=$dbname", $username, $password);
       $homeworkname= "123";
     	$type="1";
     	$state="1";

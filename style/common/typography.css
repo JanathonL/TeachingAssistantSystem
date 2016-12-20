@@ -1,0 +1,87 @@
+/*导航栏、标题栏、底部声明版式*/
+body {
+    font-size:62.5%;
+    font-family: 微软雅黑;
+    margin:0;
+}
+
+ul {
+    list-style:none;
+}
+
+a {
+    text-decoration: none;
+}
+
+#wrapper aside li{
+    margin: 1rem 1rem;
+    text-align:left;
+}
+
+#wrapper aside #logo{
+    display: block;
+    text-align:center;
+    font-size : 3em;
+    border-bottom-style: solid;
+}
+
+#wrapper aside #logo h1{
+    margin:5px 0;
+    font-size: 1rem;
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+}
+
+#wrapper aside #logo h3{
+    margin:0;
+    font-size:0.3rem;
+}
+
+#wrapper aside #nav {
+    font-size: 1.5rem;
+}
+
+#wrapper aside #logout {
+    font-size: 1.2rem;
+}
+
+#wrapper aside #nav img, #wrapper aside #logout img{
+    margin-right:1rem;
+}
+
+#map {
+
+}
+
+#map ul li:after{
+    content:">>"
+}
+
+#map ul li.maplast:after{
+    content:"";
+    height:0;
+}
+
+
+#functional-panel {
+    margin: 20px 0;
+}
+
+.button {
+    border-style: solid;
+    border-color: hsla(0, 0%, 0%, 0.5);
+    border-radius: 3px;
+    box-shadow: 2px 2px 2px hsla(0, 0%, 0%, 0.1);
+}
+
+@media all and (max-width: 640px) {
+
+    #wrapper aside li{
+        margin: 0 1rem;
+    }
+
+    #wrapper aside li a {
+        font-size: 1.7em;
+    }
+
+}

@@ -48,7 +48,7 @@ type int not null,      -- 作业形式 1选择题，2问答题
 */
   if (isset($_POST['homeworkname'])) {
     try {
-      $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+      $conn = new PDO("mysql:host=$servername;port=$port;dbname=$dbname", $username, $password);
       $homeworkname= $_POST["homeworkname"];
     	$type=$_POST["type"];
     	$state=$_POST["state"];

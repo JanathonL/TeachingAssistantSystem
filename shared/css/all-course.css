@@ -1,0 +1,26 @@
+* {
+    font-size: large;
+}
+
+a {
+    text-decoration: none;
+}
+
+.paragraph-max-height-8em {
+    height: 8em;
+    overflow: auto;
+}
+
+#goToTop {
+    position: fixed;
+    bottom: 96px;
+    right: 24px;
+    z-index: 1;
+}
+
+#goToBottom {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    z-index: 1;
+}

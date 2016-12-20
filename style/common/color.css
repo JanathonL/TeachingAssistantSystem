@@ -1,0 +1,43 @@
+/*导航栏、标题栏、底部声明颜色*/
+
+body {
+    background-color: white;
+}
+
+a {
+    color: hsla(0, 0%, 80%, 1);
+}
+
+a:hover{
+    color:hsla(200, 70%, 68%, 1);
+}
+
+header {
+    background-color: white;
+}
+
+#wrapper aside {
+    color: hsla( 0, 0%, 100%, 1);
+    background-color: hsla( 0, 0%, 50%, 1);
+}
+
+#wrapper aside #logo {
+    background-color: hsla( 0, 0%, 25%, 1);
+    border-color: hsla(0, 0%, 40%, 1);
+}
+
+#wrapper aside a {
+    color : hsla( 0, 0%, 75%, 1);
+}
+
+#wrapper aside a:hover {
+    color : hsla( 0, 0%, 100%, 1);
+}
+
+#wrapper article {
+    background-color: hsla( 0, 0%, 90%, 0.3);
+}
+
+footer {
+    background-color: white;
+}

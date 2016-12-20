@@ -28,7 +28,7 @@ Output: $lastId 这是插入这条记录的id
 */
   if (isset($_POST['userID'])) {
     try {
-      $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+      $conn = new PDO("mysql:host=$servername;port=$port;dbname=$dbname", $username, $password);
       	$userID=$_POST["userID"];
     	$type=$_POST["type"];
     	$permission=$_POST["permission"];

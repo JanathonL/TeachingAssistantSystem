@@ -12,7 +12,7 @@ Output: $result 这是一个array，里面有所有  特定的表  的属性。
   {
     include 'db.php';    
       try {
-        $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+        $conn = new PDO("mysql:host=$servername;port=$port;dbname=$dbname", $username, $password);
         $year = date("Y");
         $sql=$conn->prepare("SELECT id from $tablename where year=:year and Teacher1=:Teacher1
          and course_time1=:course_time1 and course_id=:course_id and "."$attr=:$attr");

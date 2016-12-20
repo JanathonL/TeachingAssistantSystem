@@ -1,0 +1,47 @@
+#wrapper article h3{
+    max-width:1200px;
+}
+
+#wrapper article section {
+    max-width: 1200px;
+}
+
+#wrapper article section {
+    background-color: hsla(0, 0%, 100%, 1);
+    border-color: hsla(0, 0%, 80%, 0.7);
+}
+
+#wrapper article *{
+}
+
+#wrapper article section{
+    border-width:0.1em;
+    border-style:solid;
+    box-shadow: 5px 5px 0.5em hsla(0, 0%, 50%, 1);
+}
+
+#wrapper article section.class{
+    display:inline;
+}
+
+#class .container{
+    display: inline-block;
+    margin: 30px;
+    position:relative;
+    width:300px;
+    height:200px;
+    border-style: solid;
+}
+
+#class .container *{
+    padding-left: 50px;
+}
+
+#class .container .icon img{
+    position:absolute;
+    left:-20px;
+    top:10px;
+    width:50px;
+    height:50px;
+    overflow: hidden;
+}

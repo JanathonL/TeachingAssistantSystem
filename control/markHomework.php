@@ -17,7 +17,7 @@ Output: $isOK
 <?php
   if (isset($_GET['homeworksubmitid'])) {
     try {
-      $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+      $conn = new PDO("mysql:host=$servername;port=$port;dbname=$dbname", $username, $password);
       $homeworksubmitid= $_GET["homeworksubmitid"];
     	$score=$_POST["score"];
     	$feedback=$_POST["feedback"];

@@ -1,0 +1,15 @@
+#login-success, #login-failed {
+    position:relative;
+    color:black;
+    background-color: white;
+    top:33%;
+    width: 33%;
+    height: 33%;
+    min-width: 200px;
+    min-height: 200px;
+    max-width: 400px;
+    max-height: 400px;
+    margin:auto;
+    text-align: center;
+    z-index:11;
+}

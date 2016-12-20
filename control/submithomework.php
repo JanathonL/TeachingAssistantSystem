@@ -36,7 +36,7 @@ require 'uploadFile_function.php';
 
   if (isset($_GET['homeworkid'])) {
     try {
-      $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+      $conn = new PDO("mysql:host=$servername;port=$port;dbname=$dbname", $username $password);
 
       	$year=date("Y");
 		$course_id=$_SESSION["course_id"];

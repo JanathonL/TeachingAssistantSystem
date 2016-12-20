@@ -1,0 +1,17 @@
+#notice-form *{
+    border-style:solid;
+    border-color:hsla(0, 0%, 50%, 0.3);
+    border-width: 0.1px 0.5px;
+    width:100%;
+}
+
+#notice-form p{
+    border-style:none;
+}
+
+#notice-text {
+    min-height: 300px;
+    overflow: scroll;
+    text-align: start;
+    word-wrap: break-word;
+}

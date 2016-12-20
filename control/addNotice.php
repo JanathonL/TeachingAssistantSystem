@@ -28,7 +28,7 @@ Output: $lastId 这是插入这条记录的id
 */
   if (isset($_POST['message'])) {
     try {
-      $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+      $conn = new PDO("mysql:host=$servername;port=$port;dbname=$dbname", $username, $password);
     	
     	$message=$_POST["message"];
       $pub_date=date("Y/m/d");

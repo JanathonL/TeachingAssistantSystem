@@ -68,7 +68,7 @@ Output: $result
   }
   if (isset($_GET['course_id'])) {
     try {
-      $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+      $conn = new PDO("mysql:host=$servername;port=$port;dbname=$dbname", $username, $password);
       $type=$_SESSION["type"];
       $course_id=$_GET["course_id"];
       $_SESSION["course_id"]=$course_id;  //这句话绑定course_id

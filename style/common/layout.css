@@ -1,0 +1,153 @@
+/*导航栏、标题栏、底部声明布局*/
+* {
+    padding:0;
+}
+
+#wrapper {
+    display:-webkit-flex;
+    display:flex;
+    flex-direction: row;
+    min-height:100vh;
+    -webkit-flex-flow:row;
+    flex-flow: row;
+}
+
+header {
+    width:100%;
+    height:50px;
+    position:fixed;
+    top:0;
+    padding-left:305px;
+    z-index:9;
+}
+
+#wrapper aside {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    width:260px;
+    z-index: 10;
+}
+
+#wrapper aside #logo{
+    -webkit-order: 0;
+    order:0;
+    width:100%;
+    min-height:50px;
+    padding:0;
+}
+
+#wrapper aside #logo img{
+    width:50px;
+    height:50px;
+    float:left;
+}
+
+#wrapper aside #nav{
+    -webkit-order: 1;
+    order:1;
+    padding:0;
+    height:80%;
+}
+
+#wrapper aside #nav img{
+    width: 1.5rem;
+    height:1.5rem;
+}
+
+#wrapper aside #logout{
+    -webkit-order: 2;
+    order:2;
+    padding:50px 0;
+    max-height:50px;
+}
+
+#wrapper aside #logout img{
+    width: 1.2rem;
+    height:1.2rem;
+}
+
+#wrapper article {
+    padding: 50px;
+    flex: 6 1 auto;
+    z-index:1;
+}
+
+#map {
+
+}
+
+#map ul li{
+    display:inline;
+}
+
+#map ul li *{
+    display:inherit;
+}
+
+#functional-panel {
+    display: flex;
+    height: 30px;
+    margin: 5px auto;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    align-items: center;
+}
+
+#functional-panel *{
+    margin: 0 10px;
+}
+
+footer {
+    position:relative;
+    bottom:0;
+    width:100%;
+    height:50px;
+    padding-left:300px;
+    z-index:9;
+}
+
+.button {
+    padding: 5px 10px;
+}
+
+@media all and (max-width: 640px) {
+
+    #wrapper{
+        width:640px;
+        -webkit-flex-flow: column;
+        flex-direction: column;
+    }
+
+    header, footer {
+        position:relative;
+    }
+
+    #wrapper article, #wrapper nav, #wrapper aside {
+        -webkit-order: 0;
+        order: 0;
+    }
+
+    #wrapper aside {
+        width:100%;
+        display: block;
+    }
+
+    #wrapper aside #logo {
+        display: block;
+    }
+
+    #wrapper aside #nav {
+        display: inline;
+    }
+
+    #wrapper aside #logout {
+        display: inline;
+        padding:0;
+    }
+
+    #wrapper aside ul {
+        display: inline-flex;
+    }
+
+}

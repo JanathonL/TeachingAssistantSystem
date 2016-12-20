@@ -1,0 +1,17 @@
+.post {
+    position:relative;
+    border-style: solid;
+    min-height: 100px;
+}
+
+.post .userID {
+    height:100%;
+    float:left;
+}
+
+.post .update-time{
+    position:absolute;
+    right:5px;
+    top:5px;
+}
+

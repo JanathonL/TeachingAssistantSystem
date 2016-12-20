@@ -16,7 +16,7 @@ Output:
 <?php
   if (isset($_GET['noticeid'])) {
     try {
-      $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+      $conn = new PDO("mysql:host=$servername;port=$port;dbname=$dbname", $username, $password);
       $noticeid= $_GET["noticeid"];
       $isOK=false;
       $sql=$conn->prepare("DELETE FROM Notice where id=:id");

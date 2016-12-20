@@ -1,0 +1,4 @@
+.button:hover, input[type="submit"], input[type="reset"] {
+    box-shadow: 2px 2px 2px hsla(0, 0%, 50%, 0.4);
+}
+

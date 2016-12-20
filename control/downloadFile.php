@@ -27,7 +27,7 @@ CREATE TABLE IF NOT EXISTS material (
     }
   if (isset($_GET['id'])) {
     try {
-      $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+      $conn = new PDO("mysql:host=$servername;port=$port;dbname=$dbname", $username, $password);
       $id= $_GET['id'];
       $Is_find=false;
       $sql=$conn->prepare("SELECT url FROM material where id=:id");

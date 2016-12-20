@@ -1,0 +1,35 @@
+* {
+    font-family: 微软雅黑;
+    margin: 0;
+    font-size: 62.5%;
+}
+
+nav {
+    border-style:solid;
+    border-width:1px;
+}
+
+nav ul li {
+    text-align: center;
+    cursor:pointer;
+}
+
+#login-window {
+    line-height: 50px;
+    border-style:solid;
+}
+
+
+#login-window input {
+    margin-top: 10%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#login-window span{
+    font-size: 1.5em;
+}
+
+#login-form input[type="submit"]{
+    -webkit-border-radius: 2px;
+}

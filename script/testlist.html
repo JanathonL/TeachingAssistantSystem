@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <script src="classutil.js"></script>
+    <script src="domutil.js"></script>
+    <script src="listutil.js"></script>
+    <script src="ajax.js"></script>
+    <script src="student.js"></script>
+    <title></title>
+    <style type="text/css">
+        .row {
+            position:relative;
+            animation: showRow 2s;
+        }
+        @keyframes showRow {
+            from {
+                left:100px;
+            }
+            to{
+                left:0;
+            }
+        }
+    </style>
+</head>
+<body>
+<div id="students"></div>
+<button onclick="sortObjects(students, 'name'); showStudents(students);" >sort by name</button>
+<button onclick="sortObjects(students, 'id'); showStudents(students);" >sort by id</button>
+<button onclick="sortObjects(students, 'homework1'); showStudents(students);" >sort by score</button>
+</body>
+</html>

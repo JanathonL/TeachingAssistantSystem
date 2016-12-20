@@ -1,0 +1,11 @@
+.name {
+    width:50%;
+}
+
+.date {
+    width:20%;
+}
+
+.list .row {
+    border-bottom-style:dotted;
+}

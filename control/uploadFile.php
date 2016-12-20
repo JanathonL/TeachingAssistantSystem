@@ -42,7 +42,7 @@ CREATE TABLE IF NOT EXISTS material (
 */
   if ($fullurl!=null) {
     try {
-      $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+      $conn = new PDO("mysql:host=$servername;port=$port;dbname=$dbname", $username, $password);
       
       $name=$_POST["name"];
       $content=$_POST["content"];

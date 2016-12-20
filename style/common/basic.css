@@ -1,0 +1,78 @@
+@import "animation.css";
+
+* {
+    font-size: large;
+}
+
+html, body{
+    height:100%;
+}
+
+#wrapper {
+    height:80%;
+}
+
+a {
+    text-decoration: none;
+}
+
+.button {
+    border-style:solid;
+    padding:0 5px;
+    text-align:center;
+    -moz-border-radius: 10%;
+    -webkit-border-radius: 10%;
+    border-radius: 10%;
+}
+
+article {
+    height:100%;
+}
+
+#map div{
+    height:100%;
+}
+
+#functional-panel {
+    display:flex;
+    margin-top:0px;
+    margin-bottom: 20px;
+    margin-left: 100px;
+    margin-right:100px;
+}
+
+#functional-panel .button{
+    display: inline-block;
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    border-radius:0;
+}
+
+textarea:hover{
+    box-shadow: 5px 5px 5px hsla(0, 0%, 50%, 0.5);
+}
+
+#main {
+    height: 100%;
+    margin-left:100px;
+    margin-right:100px;
+}
+
+.paragraph-max-height-8em {
+    height: 8em;
+    overflow: auto;
+}
+
+#goToTop {
+    position: fixed;
+    bottom: 96px;
+    right: 24px;
+    z-index: 1;
+}
+
+#goToBottom {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    z-index: 1;
+}

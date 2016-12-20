@@ -1,4 +1,3 @@
-<?php session_start(); ?>
 <?php 
 /*********************************************************************************
 描述：当进入某一门课，把所有的  特定的表  都显示出来
@@ -15,7 +14,7 @@ Output: $result 这是一个array，里面有所有  特定的表  的属性。
     include 'db.php';
     if (isset($_GET['course_time1'])) {
       try {
-        $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+        $conn = new PDO("mysql:host=$servername;port=$port;dbname=$dbname", $username, $password);
         $year = date("Y");
         $course_id=$_GET["course_id"];
         $Teacher1=$_GET["Teacher1"];
