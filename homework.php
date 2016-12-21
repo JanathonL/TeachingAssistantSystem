@@ -1,30 +1,12 @@
-<?php require  'control/listHomework.php' ?>
-<?php
-class M{
-    public $name = "name";
-    public $url = "url";
-    public $update_time = "update_time";
-    public $teacher1 = "teacher1";
-    public $id="id";
-    public $deadlin="deadline";
-    public $pub_date="pubdate";
-    public $content="content";
-    public $type = 2;
-}
-class N{
-    public $name = "name";
-    public $url = "url";
-    public $update_time = "update_time";
-    public $teacher1 = "teacher1";
-    public $id="id";
-    public $deadlin="deadline";
-    public $pub_date="pubdate";
-    public $content="content";
-    public $type = 1;
-}
-$result=array(new M, new N);
-$type = 1;
+<?php 
+require 'control/listHomework.php';
+require  'control/getHomework.php';
 ?>
+<?php
+echo "result".$result;
+$homework=getHomework($result,$_GET["id"]);
+
+//?>
 
 <?php $title="作业";require './partial/head.php'; ?>
 <link rel="stylesheet" href="style/common/basic.css"/>
@@ -43,9 +25,9 @@ $type = 1;
     <?php require './partial/nav.php'; ?>
 
     <div id="map" class="w3-row">
-        <div class="w3-col m2 l1 w3-hide-small w3-left w3-padding-8 w3-dark-gray w3-hover-white w3-center"><a href="myclasses.php">我的课程</a></div>
+        <div class="w3-col m2 l1 w3-hide-small w3-left w3-padding-8 w3-dark-gray w3-hover-white w3-center"><a href="mycourses.php">我的课程</a></div>
         <?php if (isset($course)) {?>
-            <div class="w3-col m2 l1 w3-hide-small w3-left w3-padding-8 w3-dark-gray w3-hover-white w3-center"><a href="class.php">
+            <div class="w3-col m2 l1 w3-hide-small w3-left w3-padding-8 w3-dark-gray w3-hover-white w3-center"><a href="course.php">
                 <?php   echo $course->name;?>
             </a></div><?php       } ?>
         <div class="maplast w3-col m2 l1 w3-hide-small w3-left w3-padding-8 w3-black w3-hover-white w3-center"><a href="#">成绩查询</a></div>
@@ -68,12 +50,12 @@ $type = 1;
         </div>
         <div id="main">
             <div id="homeworks" style="height:<?php echo count($result)*100?>%">
-            <?php foreach ($result as $homework){
-                if($homework->type == 1){//选择题
+            <?php 
+                if($homework["type"] == 1){//选择题
                     ?>
                     <div class="homework">
-                        <div class="name"><?php echo $homework->name?></div>
-                        <div class="content"><?php echo $homework->content?></div>
+                        <div class="name"><?php echo $homework["name"]?></div>
+                        <div class="content"><?php echo $homework["content"]?></div>
                         <div class="answer">
                             <form action="control/submithomework.php">
                                 <!-- 选择题的内容格式要规定一下 -->
@@ -83,11 +65,11 @@ $type = 1;
                         </div>
                     </div>
             <?php
-                } else if($homework->type == 2){//问答题
+                } else if($homework["type"] == 2){//问答题
                     ?>
                     <div class="homework">
-                        <div class="name"><?php echo $homework->name?></div>
-                        <div class="content"><?php echo $homework->content?></div>
+                        <div class="name"><?php echo $homework["name"]?></div>
+                        <div class="content"><?php echo $homework["content"]?></div>
                         <div class="answer">
                             <form action="control/submithomework.php">
                                 <textarea name="answer"></textarea>
@@ -97,7 +79,7 @@ $type = 1;
                     </div>
             <?php
                 }
-}   //end of foreach?>
+   //end of foreach?>
             </div>
         </div>
     </article>

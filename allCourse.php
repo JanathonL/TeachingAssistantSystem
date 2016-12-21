@@ -20,7 +20,7 @@ require './control/login.php';
                         <input type="password" name="password" placeholder="密码">
                         <input type="radio" name="type" value="1" /><span>学生</span>
                         <input type="radio" name="type" value="2" /><span>助教</span>
-                        <input type="radio" name="type" value="4" /><span>教师</span>
+                        <input type="radio" name="type" value="3" /><span>教师</span>
                         <input type="radio" name="type" value="8" /><span>管理员</span>
                         <input type="submit" name="submit" value="登录">
                     </form>
@@ -110,7 +110,9 @@ require './control/login.php';
                     echo '<div id="course-'.$i.'" class="course '.$showOrHide.' w3-panel w3-col s12 m6 l4 w3-leftbar w3-border-'.$color.' w3-hover-border-dark-gray w3-hover-light-gray w3-hover-shadow">';
                         echo '<button onclick="document.getElementById(\'course-detail-'.$i.'\').style.display=\'block\'" class="w3-btn w3-btn-block w3-bottombar w3-border-'.$color.' w3-hover-border-dark-gray w3-white w3-hover-light-gray w3-xlarge">'.$row->course_name.'</button>';
                         echo '<p class="w3-hide-small paragraph-max-height-8em">'.$row->introduction.'</p>';
+
                         echo '<p>'.$row->department.' '.$row->credit.'学分'.'</p>';
+
                         echo '<div id="course-detail-'.$i.'" class="w3-modal">';
                             echo '<div class="w3-modal-content">';
                                 echo '<div class="w3-container">';

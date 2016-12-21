@@ -70,3 +70,26 @@ function addChoice() {
 function serializeChoiceForm(){
 
 }
+
+function uploadImage(element){
+    if(typeof ImageAjax == "undefined"){
+        ImageAjax = new AjaxUtil();
+        ImageAjax.targetForm = element.form;
+        ImageAjax.setSuccessAction(function(){
+            var response = ImageAjax.getResponse();
+            if(true){   //上传成功
+                var textField = ImageAjax.targetForm.elements["content"];
+                textField.value = textField.value + "<img src=\"" + response +"\"></img>";
+            }
+        });
+        ImageAjax.setFailureAction(function(){
+
+        });
+    }
+    var data = new FormData();
+    data.append(element.name, element);
+
+
+
+    ImageAjax.asyRequest("./control/uploadFile.php", data, "post");
+}

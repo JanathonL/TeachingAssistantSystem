@@ -28,6 +28,30 @@ Output:
  ?>
 <?php include 'db.php'; ?>
 <?php
+  /**
+  * 
+  */
+  require 'getSingleClass.php';
+  class Course {
+    function Course($year, $course_id, $course_name,$Course_type,$language,
+                    $introduction, $content, $plan,$English_name,$department,
+                    $credit, $prerequisite_course, $Teacher1, $course_time1) {
+      $this->year = $year;
+      $this->course_id = $course_id;
+      $this->course_name = $course_name;
+      $this->Course_type = $Course_type;
+      $this->language = $language;
+      $this->introduction = $introduction;
+      $this->content = $content;
+      $this->plan = $plan;
+      $this->English_name = $English_name;
+      $this->department = $department;
+      $this->credit = $credit;
+      $this->prerequisite_course = $prerequisite_course;  
+      $this->Teacher1 = $Teacher1;
+      $this->course_time1 = $course_time1;    
+    }
+  }
   if (isset($_GET['listCourse'])) {
     try {
       $conn = new PDO("mysql:host=$servername;port=$port;dbname=$dbname", $username, $password);
@@ -53,7 +77,7 @@ Output:
         $sql_student->bindParam(':year',$year);
         $sql_student->execute();
         $result_student=$sql_student->fetchAll();//所有学生相关的某个班的信息
-        
+        $single_class=$result_student;
       }
       else if ($type==2) {//助教
         $teacher_assistant_id=$_SESSION["username"];
@@ -68,7 +92,7 @@ Output:
         $sql_teacher_assistant->execute();
         $result_teacher_assistant=$sql_teacher_assistant->fetchAll();
         //所有助教相关的某个班的信息
-
+        $single_class=$result_teacher_assistant;
       }
       else{
         $sql4=$conn->prepare("SELECT course_id from Course where year=:year");
@@ -79,7 +103,9 @@ Output:
         $sql_administrator->bindParam(':year',$year);
         $sql_administrator->execute();
         $result_administrator=$sql_administrator->fetchAll();//管理员直接显示所有的单个课程信息
+        $single_class=$result_administrator;
       }
+
       $courseList=array();//result array包括了所有的课程基本东西
       foreach ($result as $row) {
         $sql5=$conn->prepare("SELECT * from Course where year=:year and course_id=:course_id");
@@ -87,7 +113,17 @@ Output:
         $sql5->bindParam(':course_id',$row["course_id"]);
         $sql5->execute();
         $single_course=$sql5->fetchObject();
-        array_push($courseList,$single_course);
+
+        $class=getSingleClass($row["course_id"],$single_class);
+        array_push($courseList,new Course($year,$row["course_id"], 
+                    $single_course->course_name,$single_course->Course_type,
+                    $single_course->language,
+                    $single_course->introduction, 
+                    $single_course->content, 
+                    $single_course->plan,$single_course->English_name,
+                    $single_course->department,
+                    $single_course->credit, $single_course->prerequisite_course,
+                    $class["Teacher1"],$class["course_time1"]));
       }
       
     }

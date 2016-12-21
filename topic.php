@@ -53,7 +53,7 @@
         <div id="map">
             <ul>
                 <li><a href="myclasses.php">我的课程</a></li>
-                <li><a href="class.php"><?php $course->name ?></a></li>
+                <li><a href="course.php"><?php $course->name ?></a></li>
                 <li><a href="forum.php">论坛</a></li>
                 <li class="maplast"><p><?php echo $result->title; ?></p></li>
             </ul>

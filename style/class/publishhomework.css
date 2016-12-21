@@ -1,8 +1,10 @@
+#main *{
+    border-width:0.5px;
+}
+
 .row {
     display:flex;
 }
-
-
 
 .row div{
     border-style:solid;
@@ -25,9 +27,7 @@
 
 .row div div.button{
     width:100%;
-    height:100%;
 }
-
 
 .row div:nth-child(1){
     width:100px;
@@ -42,5 +42,10 @@
 }
 
 .row input[type="submit"], .row input[type="reset"]{
-    width:50%;
+    width:25%;
+}
+
+#homework-choice .row:nth-of-type(4){
+    display:flex;
+    justify-content: space-between;
 }

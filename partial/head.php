@@ -7,6 +7,8 @@
       <?php echo $title; ?>
     </title>
     <link rel="stylesheet" href="shared/css/bootstrap.min.css" charset="utf-8">
+      <link rel="stylesheet" href="shared/css/font-awesome.css" charset="utf-8">
+      <link rel="stylesheet" href="shared/css/w3.css" charset="utf-8">
   </head>
 
   <body>

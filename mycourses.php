@@ -4,13 +4,13 @@ $_GET['listCourse'] = true;
 require './control/listCourse.php';
 switch ($type){
     case 1: //学生
-        $courseList = $result_student;
+        $List = $result_student;
         break;
     case 2; //助教
-        $courseList = $result_teacher_assistant;
+        $List = $result_teacher_assistant;
         break;
-    case 3: //教师
-        $courseList = $result;
+    case 8: //管理员
+        $List = $result_administrator; 
         break;
     default:
         break;
@@ -107,6 +107,7 @@ if(isset($courseList))
         echo '<div id="course-'.$i.'" class="course '.$showOrHide.' w3-panel w3-col s12 m6 l4 w3-leftbar w3-border-'.$color.' w3-hover-border-dark-gray w3-hover-light-gray w3-hover-shadow">';
         echo '<button onclick="document.getElementById(\'course-detail-'.$i.'\').style.display=\'block\'" class="w3-btn w3-btn-block w3-bottombar w3-border-'.$color.' w3-hover-border-dark-gray w3-white w3-hover-light-gray w3-xlarge">'.$row->course_name.'</button>';
         echo '<p class="w3-hide-small paragraph-max-height-8em">'.$row->introduction.'</p>';
+        echo '<a href="course.php?course_id='.$row->course_id.'&Teacher1='.$row->Teacher1.'&course_time1='.$row->course_time1.'">进入课程</a>';
         echo '<p>'.$row->department.' '.$row->credit.'学分'.'</p>';
         echo '<div id="course-detail-'.$i.'" class="w3-modal">';
         echo '<div class="w3-modal-content">';

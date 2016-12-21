@@ -1,7 +1,7 @@
 <?php
 #<link rel="stylesheet" href="./css/bootstrap.min.css" charset="utf-8">
   if (isset($_SESSION['message'])) {
-    echo "<div class='alert alert-dismissible alert-";
+    echo "<div id='alert' class='alert alert-dismissible alert-";
     switch ($_SESSION['message_type']) {
       case "success";
         echo "success'>";

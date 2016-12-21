@@ -29,7 +29,7 @@ $type = 2;
     <?php require './partial/nav.php'; ?>
 
     <div id="map" class="w3-row">
-        <div class="w3-col m2 l1 w3-hide-small w3-left w3-padding-8 w3-dark-gray w3-hover-white w3-center"><a href="myclasses.php">我的课程</a></div>
+        <div class="w3-col m2 l1 w3-hide-small w3-left w3-padding-8 w3-dark-gray w3-hover-white w3-center"><a href="mycourses.php">我的课程</a></div>
         <!--        <div class="w3-col m2 l1 w3-hide-small w3-left w3-padding-8 w3-dark-gray w3-hover-white w3-center"><a href="class.php">--><?php //if (isset($course)) {
         //                    echo $course->name;
         //                } ?><!--</a></div>-->
@@ -65,9 +65,9 @@ $type = 2;
                 <?php
                 foreach ($result as $notice){
                     ?>
-                    <div class="row">
-                        <div class="name"><a href="notice.php?notice_id=<?php echo $notice->id; ?>"><?php echo $notice->name; ?></a></div>
-                        <div class="date"><?php echo $notice->pub_date; ?></div>
+                <div class="row">
+                    <div class="name"><a href="notice.php?notice_id=<?php echo $notice['id']; ?>"><?php echo $notice['name']; ?></a></div>
+                    <div class="date"><?php echo $notice['pub_date']; ?></div>
                         <?php if(isset($type)){
                             if($type>1){
                                 ?>

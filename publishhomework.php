@@ -38,7 +38,7 @@ $type = 2;
     <div id="map" class="w3-row">
         <div class="w3-col m2 l1 w3-hide-small w3-left w3-padding-8 w3-dark-gray w3-hover-white w3-center"><a href="myclasses.php">我的课程</a></div>
         <?php if (isset($course)) {?>
-            <div class="w3-col m2 l1 w3-hide-small w3-left w3-padding-8 w3-dark-gray w3-hover-white w3-center"><a href="class.php">
+            <div class="w3-col m2 l1 w3-hide-small w3-left w3-padding-8 w3-dark-gray w3-hover-white w3-center"><a href="course.php">
                 <?php   echo $course->name;?>
             </a></div><?php       } ?>
         <div class="maplast w3-col m2 l1 w3-hide-small w3-left w3-padding-8 w3-dark-gray w3-hover-white w3-center"><a href="homeworks.php">作业列表</a></div>
@@ -69,6 +69,9 @@ $type = 2;
                     <div>题目</div>
                     <div>
                         <textarea name="content"></textarea>
+                    </div>
+                    <div>
+                            <input class="file-update" type="file" name="image" accept="image/png,image/gif, image/jpg, image/jpeg" multiple="multiple" onchange="uploadImage(this)">
                     </div>
                 </div>
                 <div class="row">

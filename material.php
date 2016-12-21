@@ -75,9 +75,9 @@ $type = 2;
         <?php
         foreach($result as $material) {
             echo "<div class=\"material row\">";
-            echo "<a class=\"material name\" href=\"" . $material->url . "\">" . $material->name . "</a>";
-            echo "<span class=\"update-time\">" . $material->update_time . "</span>";
-            echo "<span class=\"teacher\">" . $material->teacher1 . "</span>";
+            echo "<a class=\"material name\" href=\"" . $material['url'] . "\">" . $material['name'] . "</a>";
+            echo "<span class=\"update-time\">" . $material['update_time'] . "</span>";
+            echo "<span class=\"teacher\">" . $material['teacher1'] . "</span>";
             if(isset($type)){
                 if($type>1){
                     echo "<a class=\"button modify-button\" href=\"".$material->url."\">重传</a>";

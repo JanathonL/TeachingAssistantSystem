@@ -69,7 +69,7 @@ CREATE TABLE IF NOT EXISTS material (
       $isOK = $sql->execute();
       $lastId = getId("material",$course_id,$Teacher1,$course_time1,"name",$name);
     if ($isOK==true) {
-      echo "add permission successfully";
+      echo $url;
     }
     else{
       echo "add permission failure";
