@@ -1,7 +1,3 @@
-<?php
-  session_start();
-?>
-
 <?php include 'db.php'; ?>
 <?php
   if (isset($_POST['username'])) {
@@ -40,7 +36,7 @@
     if (isset($_SESSION['username'])) {
       $_SESSION['message'] = "登录成功";
       $_SESSION['message_type'] = "success";
-      header("location: ../mycourses.php");
+      header("location: mycourses.php");
       exit;
     }
   }

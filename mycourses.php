@@ -16,44 +16,17 @@ switch ($type){
         break;
 }
 ?>
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+<?php $title="我的课程";require './partial/head.php'; ?>
     <link rel="stylesheet" href="shared/css/font-awesome.css">
     <link rel="stylesheet" href="shared/css/w3.css">
     <link rel="stylesheet" href="shared/css/all-course.css">
     <script src="shared/js/allCourse.js"></script>
-    <title>所有课程</title>
-</head>
-<body>
+
+
 
 
 <header class="w3-top w3-card-4">
-    <nav id="topNav" class="w3-row w3-light-grey">
-        <div class="w3-col l2 w3-hide-small w3-hide-medium w3-padding-8 w3-dark-gray w3-hover-white w3-center">
-            <a href="" target='_blank'>教学支撑辅助网站</a>
-        </div>
-        <div class="w3-col m1 w3-hide-small w3-hide-large w3-padding-8 w3-dark-gray w3-hover-white w3-center">
-            <a href="" target="_blank"><i class="fa fa-home"></i></a>
-        </div>
-        <div class="w3-col m2 l1 w3-hide-small w3-right w3-padding-8 w3-dark-gray w3-hover-white w3-center">
-            <a href="" target="_blank">帮助中心</a>
-        </div>
-        <div class="w3-col m1 l1 w3-hide-small w3-right w3-padding-8 w3-dark-gray w3-hover-white w3-center">
-            <a href="" target="_blank">论坛</a>
-        </div>
-        <div class="w3-col m2 l1 w3-hide-small w3-right w3-padding-8 w3-black w3-hover-white w3-center">
-            <a href="" target="_self">所有课程</a>
-        </div>
-        <div class="w3-col s4 m2 l1 w3-right w3-padding-8 w3-dark-gray w3-hover-white w3-center">
-            <a href="" target="_blank">我的课程</a>
-        </div>
-        <div class="w3-col s4 w3-hide-medium w3-hide-large">
-            <button onclick="openAndCloseSidenav()" class="w3-btn-block w3-bottombar w3-border-dark-gray w3-hover-border-white w3-dark-gray w3-hover-white">菜单 <i class="fa fa-bars"></i></button>
-        </div>
-    </nav>
+    <?php require './partial/nav.php'; ?>
 
     <div id="searchBar" class="w3-row">
         <div class="w3-col s5 m5 l5">
@@ -79,17 +52,11 @@ switch ($type){
     </div>
 </header>
 
-<nav id="sideNav" class="w3-hide w3-sidenav w3-white w3-card-4 w3-animate-left">
-    <button onclick="openAndCloseSidenav()" class="w3-btn-block w3-bottombar w3-border-dark-gray w3-white w3-hover-light-gray">关闭菜单 <i class="fa fa-close"></i></button>
-    <a href="" target="_blank" class="w3-margin w3-leftbar w3-border-dark-gray w3-hover-light-gray w3-hover-shadow">教学支撑辅助网站</a>
-    <a href="" target="_blank" class="w3-margin w3-leftbar w3-border-dark-gray w3-hover-light-gray w3-hover-shadow">我的课程</a>
-    <a href="" target="_self" class="w3-margin w3-leftbar w3-border-dark-gray w3-hover-light-gray w3-hover-shadow">所有课程</a>
-    <a href="" target="_blank" class="w3-margin w3-leftbar w3-border-dark-gray w3-hover-light-gray w3-hover-shadow">论坛</a>
-    <a href="" target="_blank" class="w3-margin w3-leftbar w3-border-dark-gray w3-hover-light-gray w3-hover-shadow">帮助中心</a>
-</nav>
+<?php require './partial/slidenav.php'; ?>
 
-<br><br><br>
-<button onClick="<?php unset($_SESSION["username"])?>">注销</button>
+<br><br><br><br>
+<?php include 'partial/message.php'; ?>
+<a href="control/logout.php">注销</a>
 <?php
 if(isset($courseList))
 {
@@ -189,30 +156,4 @@ if(isset($courseList))
 }
 ?>
 
-<footer>
-    <div id="bottom" class="w3-row">
-        <div class="w3-col s4 m4 l4 w3-center w3-padding w3-black w3-text-white">
-            <a href="" target="_blank" class="w3-hover-white w3-hover-shadow">我的课程</a>
-        </div>
-        <div class="w3-col s4 m4 l4 w3-center w3-padding w3-dark-grey w3-text-white">
-            <a href="" target="_blank" class="w3-hover-white w3-hover-shadow">课程论坛</a>
-        </div>
-        <div class="w3-col s4 m4 l4 w3-center w3-padding w3-grey w3-text-white">
-            <a href="" target="_blank" class="w3-hover-white w3-hover-shadow">帮助中心</a>
-        </div>
-    </div>
-    <div class="w3-container w3-center w3-padding w3-light-gray">
-        <a href="" target="_blank" class="w3-padding w3-hover-white w3-hover-shadow">Powered by tas</a>
-    </div>
-</footer>
-
-<aside id="goToTop" class="w3-tooltip">
-    <div class="w3-text w3-padding w3-dark-gray">到顶部</div>
-    <a href="#" class="w3-btn-floating-large w3-dark-gray w3-hover-white w3-xxlarge"><i class="fa fa-angle-double-up"></i></a>
-</aside>
-<aside id="goToBottom" class="w3-tooltip">
-    <div class="w3-text w3-padding w3-dark-gray">到底部</div>
-    <a href="#bottom" class="w3-btn-floating-large w3-dark-gray w3-hover-white w3-xxlarge"><i class="fa fa-angle-double-down"></i></a>
-</aside>
-</body>
-</html>
+<?php include './partial/footer.php'; ?>

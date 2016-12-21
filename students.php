@@ -1,11 +1,6 @@
 <?php //include 'control/searchStudent.php'; ?>
 
-<!DOCTYPE html>
-<html>
-<head lang="en">
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width">
-
+<?php $title="学生";require './partial/head.php'; ?>
     <link rel="stylesheet" href="style/common/basic.css"/>
     <link rel="stylesheet" href="style/home/basic.css"/>
     <link rel="stylesheet" href="style/class/students.css"/>
@@ -38,9 +33,7 @@
             showStudents(students);
         };
     </script>
-    <title></title>
-</head>
-<body>
+
 
 <!--台头标题-->
 <header>
@@ -48,7 +41,7 @@
         权限管理
     </h1>
 </header>
-
+<?php include 'partial/message.php'; ?>
 <div id="main">
 
     <!-- 左侧导航栏-->
@@ -91,12 +84,4 @@
     </article>
 </div>
 
-<!--底部声明-->
-<footer>
-    <div>
-        <h3>tas</h3>
-    </div>
-</footer>
-
-</body>
-</html>
+<?php include './partial/footer.php'; ?>

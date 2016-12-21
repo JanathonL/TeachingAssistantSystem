@@ -4,19 +4,13 @@
 ?>
 
 
-<!DOCTYPE html>
-<html>
-<head lang="en">
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width">
+<?php $title="帖子";require './partial/head.php'; ?>
     <link rel="stylesheet" href="style/common/basic.css"/>
     <link rel="stylesheet" href="style/class/list.css"/>
     <link rel="stylesheet" href="style/class/topic.css"
     <script src="script/utils.js"></script>
     <script src="script/notice.js"></script>
-    <title></title>
-</head>
-<body>
+
 
 <!--台头标题-->
 <header>
@@ -24,9 +18,9 @@
         <?php echo $result->title; ?>
     </h1>
 </header>
-
+<?php include 'partial/message.php'; ?>
 <div id="main">
-
+    
     <!-- 左侧导航栏-->
     <aside>
         <div id="logo">
@@ -52,7 +46,7 @@
             </ul>
         </div>
     </aside>
-
+    
     <!--右侧内容-->
     <article>
         <!--地址导航-->
@@ -96,12 +90,4 @@
     </article>
 </div>
 
-<!--底部声明-->
-<footer>
-    <div>
-        <h3>tas</h3>
-    </div>
-</footer>
-
-</body>
-</html>
+<?php include './partial/footer.php'; ?>
