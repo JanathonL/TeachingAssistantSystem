@@ -5,7 +5,7 @@ CREATE TABLE  IF NOT EXISTS OrdinaryUser (   -- 包含所有的用户，助教�
   username varchar(20) not NULL,
   password varchar(20) not null,  -- md5加密
   type int not null,              -- 1学生，2助教，4老师，8管理员
-  permission int not null,        -- 与一下然后判断有什么权限
+  permission int not null,        -- 与一下然后判断有什么权限 1下载作业 2 上传作业 4 下载资料 8 上传资料
   nickname varchar(20) not null,
   gender int not null,            -- male, female, why do you ask
   age    int not null,

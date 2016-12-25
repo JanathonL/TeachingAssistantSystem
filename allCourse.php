@@ -20,7 +20,7 @@ require './control/login.php';
                         <input type="password" name="password" placeholder="密码">
                         <input type="radio" name="type" value="1" /><span>学生</span>
                         <input type="radio" name="type" value="2" /><span>助教</span>
-                        <input type="radio" name="type" value="3" /><span>教师</span>
+                        <input type="radio" name="type" value="4" /><span>教师</span>
                         <input type="radio" name="type" value="8" /><span>管理员</span>
                         <input type="submit" name="submit" value="登录">
                     </form>

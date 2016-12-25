@@ -41,6 +41,30 @@ Output: $result 这是一个array，里面有所有  特定的表  的属性。
       return null;
     }
   }
+  function ListPost($tablename)
+  {
+    include 'db.php';
+    if (isset($_GET['course_id'])) {
+      try {
+        $conn = new PDO("mysql:host=$servername;port=$port;dbname=$dbname", $username, $password);
+        $year = date("Y");
+        $board_id=$_GET["course_id"];
+        $sql=$conn->prepare("SELECT * from $tablename where board_id=:board_id");
+        
+        $sql->bindParam(':board_id',$board_id);
+        $isOK = $sql->execute();
+        $result=$sql->fetchAll();//array
+        return $result;
+      }
+      catch(PDOException $e)
+      {
+        echo "list $tablename failure" . "<br>" . $e->getMessage();
+      }
+      $conn = null;
+      $sql = null;
+      return null;
+    }
+  }
   function ListStuItems($tablename,$student_id)
   {
     include 'db.php';

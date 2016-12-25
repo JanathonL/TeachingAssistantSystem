@@ -1,4 +1,5 @@
-<?php require 'control/listHomework.php' ?>
+<?php session_start(); ?>
+<?php require 'control/listHomework.php'; ?>
 <?php $homeworks = $result; ?>
 <?php $materials = ListItems("material"); ?>
 <?php $notices = ListItems("Notice"); ?>
@@ -45,7 +46,7 @@
                     foreach ($notices as $notice){
                         ?>
                 <div class="row">
-                    <div class="name"><a href="notice.php?notice_id=<?php echo $notice['id']; ?>"><?php echo $notice['name']; ?></a></div>
+                    <div class="name"><a href="notice.php?notice_id=<?php echo $notice['id']; ?>"><?php echo $notice['message']; ?></a></div>
                     <div class="date"><?php echo $notice['pub_date']; ?></div>
                 </div>
                 <?php
