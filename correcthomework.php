@@ -1,28 +1,28 @@
 <?php
-session_start(); 
-$_SESSION["username"]="111";
-$_SESSION["type"]="1";
-$_SESSION["course_id"]="111";
-require  'control/listSubmitHomework.php' ?>
+    session_start(); 
+    $_GET['course_id']=$_SESSION["course_id"];
+    $_GET['Teacher1']=$_SESSION["Teacher1"];
+    $_GET['course_time1']=$_SESSION["course_time1"];
+    require 'control/listSubmitHomework.php';
+    if (isset($result)) {
+        $homeworksubmit=$result;
+    }
+     ?>
 <?php
-require 'control/listItems.php';
-$homeworkResult=ListItems("homework");
-$homeworksubmit=$result;
-$type = 1;
-foreach($homeworkResult as $row){
-	$homework=$row;
-}
-
+    require 'control/listItems.php';
+    require 'control/getHomework.php';
+    $homeworkResult=ListItems("homework");
+    $homework=getHomework($homeworkResult,$_GET["homeworkid"]);
 ?>
 <?php $title="批改作业"; require 'partial/head.php'; ?>
-
+<link rel="stylesheet" href="style/common/basic.css"/>
 
 <!--台头标题-->
 <header class="w3-top w3-card-4">
     <?php require './partial/nav.php'; ?>
 
     <div id="map" class="w3-row">
-        <div class="w3-col m2 l1 w3-hide-small w3-left w3-padding-8 w3-dark-gray w3-hover-white w3-center"><a href="mycourses.php">我的课程</a></div>
+        <div class="w3-col m2 l1 w3-hide-small w3-left w3-padding-8 w3-dark-gray w3-hover-white w3-center"><a href="mycourses.php" target="_blank">我的课程</a></div>
         <?php if (isset($course)) {?>
             <div class="w3-col m2 l1 w3-hide-small w3-left w3-padding-8 w3-dark-gray w3-hover-white w3-center"><a href="course.php">
                 <?php   echo $course->name;?>
@@ -77,7 +77,7 @@ foreach($homeworkResult as $row){
                         ?>
                         <div class="homework">
                             <div class="name"><?php echo $homeworksubmit["name"]?></div>
-                            <div class="content"><?php echo $homeworksubmit["content"]?></div>
+                            <div class="content"><?php echo $homeworksubmit["submit_url"]?></div>
                             <div class="feedback">
                                 <form action="control/markHomework.php?homeworksubmitid=<?php echo $homeworksubmit['id']?>" method="post">
                                     <textarea name="feedback"></textarea>

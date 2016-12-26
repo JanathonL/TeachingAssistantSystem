@@ -1,6 +1,8 @@
 <?php //$course_id=$_SESSION["course_id"];?>
 
-<?php //require "control/ListNotice.php"?>
+<?php 
+ session_start();
+ require "control/addNotice.php";?>
 
 
 <?php $title="发布通知";require './partial/head.php'; ?>
@@ -41,7 +43,7 @@
         </div>
         <div id="main">
 
-            <form id="notice">
+            <form id="notice" action="publishnotice.php" method="post">
                 <div class="row">
                     <div>主题</div>
                     <div>

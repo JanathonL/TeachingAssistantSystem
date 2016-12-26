@@ -4,16 +4,17 @@
     try {
       $conn = new PDO("mysql:host=$servername;port=$port;dbname=$dbname", $username, $password);
       $userID= $_POST["username"];
-      $password=$_POST["password"];
-      $type=$_POST["type"];
-      $Is_find=0;
-      $sql="select * from ordinaryuser";
-      foreach($conn->query($sql) as $row){
-        if($row["userID"]===$userID
-           &&$row["password"]===$password
-           &&($type&$row["type"])){
-          $name=$row["userID"];
-          $Is_find=1;
+    	$password=$_POST["password"];
+    	$name="";
+    	$type="";
+    	$Is_find=0;
+    	$sql="select * from ordinaryuser";
+    	foreach($conn->query($sql) as $row){
+    		if($row["userID"]===$userID
+    			 &&$row["password"]===$password){
+    			$type=$row["type"];
+    			$name=$row["userID"];
+    			$Is_find=1;
         }
       }
     }

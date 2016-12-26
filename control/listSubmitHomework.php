@@ -27,27 +27,30 @@ Input:
 Output: $result
 *********************************************************************************/
  ?>
-<?php include 'db.php'; ?>
+<?php include 'db.php'; 
+require "setMessage.php";?>
 <?php
-  if (isset($_GET['homeworkid'])) {
+  if (isset($_GET['homeworkid'])&&isset($_GET['correcthomework'])) {
     try {
       $conn = new PDO("mysql:host=$servername;port=$port;dbname=$dbname", $username, $password);
       $homeworkid= $_GET["homeworkid"];
     	$student_id=$_SESSION["username"];
     	$course_id=$_SESSION["course_id"];
-		$sql=$conn->prepare("SELECT * from homework_submit");
-    	//$sql=$conn->prepare("SELECT * from homework_submit where submit_cnt>0 and homework_id=:homeworkid");
+    	$sql=$conn->prepare("SELECT * from homework_submit where submit_cnt>0 and homework_id=:homeworkid");
     	$sql->bindParam(':homeworkid',$homeworkid);
-		echo "test";
 		$isOK = $sql->execute();
 		$result=$sql->fetchAll();//array
-		foreach($result as $row){
-			echo $row["homework_id"];
-		}
+
     }
     catch(PDOException $e)
     {
       echo "delete homework failure" . "<br>" . $e->getMessage();
+    }
+    if($isOK){
+      successMessage("展示作业成功");
+    }
+    else{
+        InfoMessage("展示作业失败");
     }
     $conn = null;
     $sql = null;

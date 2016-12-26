@@ -1,5 +1,5 @@
 <?php
-  session_start();
+
 ?>
 
 <?php include 'db.php'; ?>
@@ -26,9 +26,13 @@ Output:
     $lastId = $conn->lastInsertId();
     if ($isOK==true) {
       echo "delete Notice successfully";
+      $_SESSION['message'] = "删除通知成功";
+      $_SESSION['message_type'] = "success";
     }
     else{
       echo "delete Notice failure";
+      $_SESSION['message'] = "删除通知失败";
+      $_SESSION['message_type'] = "info";
     }   
     }
     catch(PDOException $e)

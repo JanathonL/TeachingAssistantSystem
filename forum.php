@@ -1,17 +1,22 @@
 <?php
 //输入输出相关参数参考ListItems.php
-session_start();
 ?>
 <?php
-$_GET['course_id']=$_SESSION['course_id'];
-$_GET['Teacher1']=$_SESSION['Teacher1'];
-$_GET['course_time1']=$_SESSION['course_time1'];
-require 'control/ListItems.php';
-$result=ListPost("post");
+//require 'control/ListItems.php';
+//require 'control/ListHomework.php';
+//require 'control/ListMatirial.php';
+//require 'control/ListNotice.php';
+//$result=ListItems("post");
 ?>
 <?php
 //test
-
+class M{
+    public $name = "name";
+    public $url = "url.docx";
+    public $update_time = "2016";
+    public $teacher1 = "li";
+}
+$result=array(new M);
 $type = 2;
 ?>
 
@@ -67,9 +72,9 @@ $type = 2;
                 <?php
                 foreach($result as $post) {
                     echo "<div class=\"post row\">";
-                    echo "<a class=\"post name\" href=\"" . $post["url"] . "\">" . $post["name"] . "</a>";
-                    echo "<span class=\"update-time\">" . $post["update_time"] . "</span>";
-                    echo "<span class=\"userID\">" . $post["userID"]. "</span>";
+                    echo "<a class=\"post name\" href=\"" . $post->url . "\">" . $post->name . "</a>";
+                    echo "<span class=\"update-time\">" . $post->update_time . "</span>";
+                    echo "<span class=\"userID\">" . $post->userID. "</span>";
                     if ($type>1){
                         echo "<a class=\"button delete-button\" href=\"" . "\">删除</a>";     //删帖部分链接待补充
                         echo "<a class=\"button delete-button\" href=\"" . "\">置顶</a>";     //置顶部分链接待补充

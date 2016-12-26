@@ -1,5 +1,5 @@
 <?php
-  session_start();
+  
 ?>
 
 <?php include 'db.php'; ?>
@@ -40,12 +40,11 @@ Output: $lastId 这是插入这条记录的id
     	
     	$sql->bindParam(':course_id',$course_id);
     	$sql->bindParam(':Teacher1',$Teacher1);
-    	$sql->bindParam(':post_time',$post_time);
     	$sql->bindParam(':year',$year);
     	$sql->bindParam(':course_time1',$course_time1);
       $sql->bindParam(':message',$message);
       $sql->bindParam(':pub_date',$pub_date);
-	 	$isOK = $sql->execute();
+	 	 $isOK = $sql->execute();
 		$lastId = getId("Notice",$course_id,$Teacher1,$course_time1,"message",$message);
 		if ($isOK==true) {
 			echo "add notice successfully";
@@ -60,5 +59,15 @@ Output: $lastId 这是插入这条记录的id
     }
     $conn = null;
     $sql = null;
+    if($isOK){
+       $_SESSION['message'] = "添加通知成功";
+       $_SESSION['message_type'] = "success";
+       header("location: course.php");
+        exit;
+    }
+    else {
+       $_SESSION['message'] = "添加通知失败";
+       $_SESSION['message_type'] = "warning";
+    }
   }
 ?>

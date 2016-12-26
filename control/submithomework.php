@@ -1,5 +1,5 @@
 <?php 
-session_start();
+
  ?>
 <?php
 /*
@@ -36,7 +36,7 @@ require 'uploadFile_function.php';
 
   if (isset($_GET['homeworkid'])) {
     try {
-      $conn = new PDO("mysql:host=$servername;port=$port;dbname=$dbname", $username $password);
+      $conn = new PDO("mysql:host=$servername;port=$port;dbname=$dbname", $username, $password);
 
       	$year=date("Y");
 		$course_id=$_SESSION["course_id"];
@@ -52,7 +52,7 @@ require 'uploadFile_function.php';
     	$sql->bindParam(':homeworkid',$homeworkid);
     	$sql->execute();
     	$result1=$sql->fetchObject();
-    	$submit_limit=$result1["submit_limit"];
+    	$submit_limit=$result1->submit_limit;
 
     	$sql2=$conn->prepare("SELECT submit_cnt from homework_submit where homework_id=:homeworkid and course_id=:course_id and student_id=:student_id");
     	
@@ -72,8 +72,8 @@ require 'uploadFile_function.php';
     		$sql3->bindParam(':course_id',$course_id);
     		$sql3->bindParam(':student_id',$student_id);
 	   		if($type=="1"){	   				   			
-	   			if($_POST["answer"]==$result1["answer"]){
-	   				$score=$result1["score"];   				
+	   			if($_POST["answer"]==$result1->answer){
+	   				$score=$result1->score;   				
 	   			}
 	   			else{
 	   				$score=0;
@@ -100,7 +100,7 @@ require 'uploadFile_function.php';
 	   	successMessage("提交作业成功");
 	}
 	else{
-	   	failureMessage("提交作业失败");
+	   	InfoMessage("提交作业失败");
 	}
     $conn = null;
     $sql = null;

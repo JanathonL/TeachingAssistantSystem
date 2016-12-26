@@ -1,9 +1,13 @@
 <?php 
+session_start();
+$_GET['course_id']=$_SESSION["course_id"];
+$_GET['Teacher1']=$_SESSION["Teacher1"];
+$_GET['course_time1']=$_SESSION["course_time1"];
 require 'control/listHomework.php';
 require  'control/getHomework.php';
+require 'control/submithomework.php';
 ?>
 <?php
-echo "result".$result;
 $homework=getHomework($result,$_GET["id"]);
 
 //?>
@@ -57,7 +61,7 @@ $homework=getHomework($result,$_GET["id"]);
                         <div class="name"><?php echo $homework["name"]?></div>
                         <div class="content"><?php echo $homework["content"]?></div>
                         <div class="answer">
-                            <form action="control/submithomework.php">
+                            <form action="homework.php?homeworkid=<?php echo $_GET["id"]; ?>&id=<?php echo $_GET["id"]; ?>&type=<?php echo $homework["type"]; ?>" method="post">
                                 <!-- 选择题的内容格式要规定一下 -->
                                 <input type="radio" name="answer" value="1">
                                 <input type="submit" name="submit" value="提交">
@@ -71,7 +75,7 @@ $homework=getHomework($result,$_GET["id"]);
                         <div class="name"><?php echo $homework["name"]?></div>
                         <div class="content"><?php echo $homework["content"]?></div>
                         <div class="answer">
-                            <form action="control/submithomework.php">
+                            <form action="homework.php?homeworkid=<?php echo $_GET["id"]; ?>&id=<?php echo $_GET["id"]; ?>&type=<?php echo $homework["type"]; ?>">
                                 <textarea name="answer"></textarea>
                                 <input type="submit" name="submit" value="提交">
                             </form>

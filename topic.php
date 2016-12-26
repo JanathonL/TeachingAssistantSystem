@@ -7,7 +7,7 @@
 <?php $title="帖子";require './partial/head.php'; ?>
     <link rel="stylesheet" href="style/common/basic.css"/>
     <link rel="stylesheet" href="style/class/list.css"/>
-    <link rel="stylesheet" href="style/class/topic.css"
+    <link rel="stylesheet" href="style/class/topic.css">
     <script src="script/utils.js"></script>
     <script src="script/notice.js"></script>
 

@@ -8,6 +8,33 @@ function openAndCloseSidenav() {
     }
 }
 
+function w3_open() {
+    document.getElementById("header").style.width = "75%";
+    document.getElementById("header").style.marginLeft = "25%";
+    document.getElementById("main").style.width = "75%";
+    document.getElementById("main").style.marginLeft = "25%";
+    document.getElementById("pagination").style.width = "75%";
+    document.getElementById("pagination").style.marginLeft = "25%";
+    document.getElementById("footer").style.width = "75%";
+    document.getElementById("footer").style.marginLeft = "25%";
+    document.getElementById("sideNav2").style.width = "25%";
+    document.getElementById("sideNav2").style.display = "block";
+    document.getElementById("openNav").style.display = 'none';
+}
+
+function w3_close() {
+    document.getElementById("header").style.width = "100%";
+    document.getElementById("header").style.marginLeft = "0%";
+    document.getElementById("main").style.width = "100%";
+    document.getElementById("main").style.marginLeft = "0%";
+    document.getElementById("pagination").style.width = "100%";
+    document.getElementById("pagination").style.marginLeft = "0%";
+    document.getElementById("footer").style.width = "100%";
+    document.getElementById("footer").style.marginLeft = "0%";
+    document.getElementById("sideNav2").style.display = "none";
+    document.getElementById("openNav").style.display = "inline-block";
+}
+
 function searchCourse() {
     var searchContentValue = document.getElementById("searchContent").value;
     var searchTypeValue = document.getElementById("searchType").value;

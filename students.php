@@ -1,6 +1,6 @@
 <?php //include 'control/searchStudent.php'; ?>
 
-<?php $title="学生";require './partial/head.php'; ?>
+<?php $title="学生"; require './partial/head.php'; ?>
     <link rel="stylesheet" href="style/common/basic.css"/>
     <link rel="stylesheet" href="style/home/basic.css"/>
     <link rel="stylesheet" href="style/class/students.css"/>
@@ -36,16 +36,20 @@
 
 
 <!--台头标题-->
-<header>
-    <h1>
-        权限管理
-    </h1>
+<header class="w3-top w3-card-4">
+    <?php require './partial/nav.php'; ?>
 </header>
+
+<?php require './partial/slidenav.php'; ?>
+
+<br><br><br><br>
+
 <?php include 'partial/message.php'; ?>
+
 <div id="main">
 
     <!-- 左侧导航栏-->
-    <aside>
+    <!--<aside>
         <div id="logo">
             <img src="image/book.jpg">
             <h1>TAS</h1>
@@ -71,7 +75,7 @@
                 </li>
             </ul>
         </div>
-    </aside>
+    </aside>-->
 
     <!--右侧内容-->
     <article>

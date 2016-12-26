@@ -1,8 +1,10 @@
 <?php
-  session_start();
 ?>
 
-<?php include 'db.php'; ?>
+<?php 
+include 'db.php'; 
+require 'setMessage.php';
+?>
 <?php 
 /*********************************************************************************
 描述：当进入某一门课的作业页面
@@ -14,7 +16,7 @@ Output:
 *********************************************************************************/
 ?>
 <?php
-  if (isset($_GET['homeworkid'])) {
+  if (isset($_GET['homeworkid'])&&isset($_GET['deleteHomework'])) {
     try {
       $conn = new PDO("mysql:host=$servername;port=$port;dbname=$dbname", $username, $password);
       $homeworkid= $_GET["homeworkid"];
@@ -24,12 +26,7 @@ Output:
 
   		$isOK = $sql->execute();
   		$lastId = $conn->lastInsertId();
-  		if ($isOK==true) {
-  			echo "delete homework successfully";
-  		}
-  		else{
-  			echo "delete homework failure";
-  		}		
+  			
     }
     catch(PDOException $e)
     {
@@ -37,5 +34,11 @@ Output:
     }
     $conn = null;
     $sql = null;
+    if($isOK){
+        successMessage("删除作业成功");
+    }
+    else{
+        InfoMessage("删除作业失败");
+    }
   }
 ?>
